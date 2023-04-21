@@ -4,7 +4,7 @@
 - 优点: 免费, 无需账号, 支持多个模型。
 - 缺点: 不是很快, 不太稳定。
 
-##demo
+# demo
 
 - url: `https://api.classmatelin.top/api`
 - curl体验: 
@@ -26,6 +26,8 @@ curl --silent --location --request POST 'https://api.classmatelin.top/api' \
 ## 安装
 
 - `docker run -itd -p 8080:8080 --name=free-chatgpt classmatelin/free-chatgpt:latest`.
+
+- docker-compose, 见[lazy-docker](https://github.com/ClassmateLin/lazy-docker)
 
 如需使用proxy, 则添加环境变量:
 ```
