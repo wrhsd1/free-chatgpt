@@ -1,7 +1,5 @@
-use std::sync::Arc;
-
+use crate::random_user_agent;
 use anyhow::{anyhow, Result};
-use log::info;
 use regex::Regex;
 use reqwest::{
     self,
@@ -9,8 +7,7 @@ use reqwest::{
     Client,
 };
 use serde::{Deserialize, Serialize};
-
-use crate::random_user_agent;
+use std::sync::Arc;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
@@ -48,13 +45,13 @@ impl Chatgpt {
 
         Ok(Self { client, base_url })
     }
-    
-    pub async fn get_encoding(&self, user_agent: &String) -> Result<String> {
-        let url =  format!("{}openai.jpeg", self.base_url);
+
+    pub async fn get_encoding(&self, user_agent: &str) -> Result<String> {
+        let url = format!("{}openai.jpeg", self.base_url);
         let response = self
             .client
             .get(url)
-            .header("user-agent", HeaderValue::from_str(&user_agent)?)
+            .header("user-agent", HeaderValue::from_str(user_agent)?)
             .send()
             .await?
             .text()
@@ -76,7 +73,10 @@ impl Chatgpt {
             .post(url)
             .json(&params)
             .header("user-agent", HeaderValue::from_str(&ua)?)
-            .header("custom-encoding", HeaderValue::from_str(&encoding.unwrap())?)
+            .header(
+                "custom-encoding",
+                HeaderValue::from_str(&encoding.unwrap())?,
+            )
             .send()
             .await?
             .text()

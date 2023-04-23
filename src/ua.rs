@@ -181,15 +181,12 @@ pub fn random_user_agent() -> String {
     )
 }
 
-
-
 #[cfg(test)]
 mod tests {
     use crate::random_user_agent;
 
-
     #[test]
-    fn test_random_user_agent(){
+    fn test_random_user_agent() {
         let ua = random_user_agent();
         println!("random user agent:{}", ua);
     }

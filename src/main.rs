@@ -1,9 +1,9 @@
 use actix_web::{error, get, post, web, App, HttpResponse, HttpServer, Responder};
 use anyhow::Result;
 use chatgpt::{Chatgpt, ChatgptParams};
+use dotenv::dotenv;
 use serde_json::json;
 use std::{sync::Arc, vec};
-use dotenv::dotenv;
 
 #[get("/")]
 async fn index() -> impl Responder {
