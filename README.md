@@ -35,7 +35,7 @@ SOCKS_PROXY: "socks5:x.x.x.x:x"
 HTTP_PROXY: "https://x.x.x.x:x"
 HTTPS_PROXY: "https://x.x.x.x:x"
 ```
-例如: `docker run -itd -p 8080:8080 -e SOCKS_PROXY="socks5:192.168.123.88:1080" --name=free-chatgpt classmatelin/free-chatgpt:latest`.
+例如: `docker run -itd -p 8080:8080 -e ALL_PROXY="socks5://192.168.123.88:1080" --name=free-chatgpt classmatelin/free-chatgpt:latest`.
 ## 使用
 
 ```
