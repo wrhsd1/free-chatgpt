@@ -23,8 +23,16 @@ class GPT_VERCEL:
             return ''
     
     def content_analysis(self:object,txt:str) -> str:
-        txt = ''.join([i[1:-1] for i in txt.split('\n') if len(i)>2])
+        #print(txt)
+        #txt = ''.join([i[1:-1] for i in txt.split('\n') if len(i)>2]) #按换行符分割 
+        #txt = ''.join([i[1:-1] for i in txt.splitlines() if len(i)>2]) #按行分割
+        txt = ''.join([i[1:-1].replace('\\n','\n') for i in txt.splitlines() if len(i)>2]) #按行分割,修复回复内容换行符不换行。
+        #print('=='*20)
+        #print(txt)
+        
         return txt
+
+
 
 
 
